@@ -115,6 +115,7 @@ static inline void added_pixmap(int size) {}
 static inline void removed_pixmap(int size) {}
 #endif
 
+#if not defined(__sh__)
 static bool is_a_candidate_for_accel(const gUnmanagedSurface* surface)
 {
 	if (surface->stride < 48)
@@ -130,11 +131,16 @@ static bool is_a_candidate_for_accel(const gUnmanagedSurface* surface)
 	}
 }
 
+#endif
 gSurface::gSurface(int width, int height, int _bpp, int accel):
 	gUnmanagedSurface(width, height, _bpp)
 {
+#if defined(__sh__)
+	if (accel)
+#else		
 	if ((accel > gPixmap::accelAuto) ||
 		((accel == gPixmap::accelAuto) && (is_a_candidate_for_accel(this))))
+#endif		
 	{
 		if (gAccel::getInstance()->accelAlloc(this) != 0)
 				eDebug("[gSurface] ERROR: accelAlloc failed");
