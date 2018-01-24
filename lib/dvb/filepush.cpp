@@ -73,7 +73,7 @@ void eFilePushThread::thread()
 	int fd_video = open("/dev/dvb/adapter0/video0", O_RDONLY);
 // Fix to ensure that event evtEOF is called at end of playbackl part 1/3
 	bool already_empty = false;
-+#endif		
+#endif		
 
 	while (!m_stop)
 	{
