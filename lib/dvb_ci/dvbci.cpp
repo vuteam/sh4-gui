@@ -1582,6 +1582,7 @@ eDVBCISlot::eDVBCISlot(eMainloop *context, int nr)
 	sprintf(filename, "/dev/dvb/adapter0/ci%d", nr);
 #else	
 	sprintf(filename, "/dev/ci%d", nr);
+#endif
 
 //	possible_caids.insert(0x1702);
 //	possible_providers.insert(providerPair("PREMIERE", 0xC00000));
