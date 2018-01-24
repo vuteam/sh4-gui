@@ -231,7 +231,7 @@ int gAccel::blit(gUnmanagedSurface *dst, gUnmanagedSurface *src, const eRect &p,
 			p.x(), p.y(), p.width(), p.height());
 	}
 	return 0;
-+#endif	
+#endif	
 #ifdef ATI_ACCEL
 	ati_accel_blit(
 		src->data_phys, src->x, src->y, src->stride,
