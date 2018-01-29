@@ -40,8 +40,8 @@ class DeliteSettings(Screen):
         elif self.sel == 2:
             self.session.open(DeliteSetupOSD2)
         elif self.sel == 3:
-            from DeviceManager.HddSetup import HddSetup
-            self.session.open(HddSetup)
+            from BHDevice import BHDevicesPanel
+            self.session.open(BHDevicesPanel)
         elif self.sel == 4:
             from Screens.Setup import Setup
             self.session.open(Setup, 'subtitlesetup')
@@ -741,7 +741,7 @@ class Bp_UsbFormat(Screen):
     def __init__(self, session):
         Screen.__init__(self, session)
         msg = _('This wizard will help you to format Usb mass storage devices for Linux.\n')
-        msg += _('Please be sure that your usb drive is NOT CONNECTED to your Dreambox box before you continue.\n')
+        msg += _('Please be sure that your usb drive is NOT CONNECTED to your Vuplus box before you continue.\n')
         msg += _('If your usb drive is connected and mounted you have to poweroff your box, remove the usb device and reboot.\n')
         msg += _('Press Red button to continue, when you are ready and your usb is disconnected.\n')
         msg = _('Press Red button to continue, when you are ready and your usb is connected.\n')
@@ -760,7 +760,7 @@ class Bp_UsbFormat(Screen):
         self.canclose = True
 
     def stepOne(self):
-        msg = _('Connect your usb storage to your Dreambox box\n')
+        msg = _('Connect your usb storage to your Vuplus box\n')
         msg += _('Press Red button to continue when ready.\n\n')
         msg += _('Warning: If your usb is already connected\n')
         msg += _('to the box you have to unplug it, press\n')
@@ -893,7 +893,7 @@ class Bp_UsbFormat(Screen):
         menu = []
         menu.append((_('ext2 - recommended for USB flash memory'), 'ext2'))
         menu.append((_('ext3 - recommended for harddrives'), 'ext3'))
-        menu.append((_('ext4 - DM800 No support'), 'ext4'))
+        menu.append((_('ext4 - recommended for Multiboot'), 'ext4'))
         menu.append((_('vfat - use only for media-files'), 'vfat'))
         self.session.openWithCallback(self.choiceBoxFstypeCB, ChoiceBox, title=_('Choice filesystem.'), list=menu)
 
@@ -1126,20 +1126,15 @@ class BhSpeedUp(Screen, ConfigListScreen):
          ['BhFullBackup', 'bhfullbackup'],
          ['BhPersonalBackup', 'bhpersonalbackup'],
          ['BhEpgBackup', 'bhepgbackup'],
-         ['Meoboot', 'enigma2-plugin-extensions-meoboot'],
-         ['FlashExpander', 'enigma2-plugin-extensions-flashexpander'],
-         ['dflash BlackHole', 'enigma2-plugin-extensions-dflash'],
          ['AutoResolution', 'enigma2-plugin-systemplugins-autoresolution'],
          ['CommonInterfaceAssignment', 'enigma2-plugin-systemplugins-commoninterfaceassignment'],
          ['AddStreamUrl', 'enigma2-plugin-extensions-addstreamurl'],
          ['PicturePlayer', 'enigma2-plugin-extensions-pictureplayer'],
-         ['MyTube', 'enigma2-plugin-extensions-mytube'],
          ['YouTube', 'enigma2-plugin-extensions-youtube'],
          ['RemoteChannelStreamConverter', 'enigma2-plugin-extensions-remotestreamconvert'],
          ['StreamTV', 'enigma2-plugin-extensions-streamtv'],
          ['AutoShutDown', 'enigma2-plugin-systemplugins-autoshutdown'],
          ['CrossEPG', 'enigma2-plugin-systemplugins-crossepg'],
-         ['xmodem', 'enigma2-plugin-extensions-xmodem'],
          ['UI3DSetup', 'enigma2-plugin-systemplugins-ui3dsetup'],
          ['UIPositionSetup', 'enigma2-plugin-systemplugins-uipositionsetup'],
          ['DLNABrowser', 'enigma2-plugin-extensions-dlnabrowser'],
