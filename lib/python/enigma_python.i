@@ -111,6 +111,7 @@ is usually caused by not marking PSignals as immutable.
 #include <lib/gdi/picload.h>
 #include <lib/gui/egauge.h>
 #include <lib/base/etpm.h>
+#include <lib/driver/vfd.h>
 %}
 
 %feature("ref")   iObject "$this->AddRef(); /* eDebug(\"AddRef (%s:%d)!\", __FILE__, __LINE__); */ "
@@ -255,6 +256,7 @@ typedef long time_t;
 %include <lib/dvb/streamserver.h>
 %include <lib/gui/egauge.h>
 %include <lib/base/etpm.h>
+%include <lib/driver/vfd.h>
 /**************  eptr  **************/
 
 /**************  signals  **************/
