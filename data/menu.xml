@@ -78,13 +78,8 @@
                         <menu weight="10" text="SoftCam / CI" entryID="ci_setup">
 				<id val="cam" />
 				<item weight="10" level="0" text="Common Interface" entryID="ci_setup"><screen module="Ci" screen="CiSelection" /></item>
-				<item weight="11" level="2" text="CCcam info" entryID="cccaminfo"><screen module="CCcamInfo" screen="CCcamInfoMain" /></item>
-				<item weight="11" level="2" text="OScam info" entryID="oscaminfo"><screen module="OScamInfo" screen="OscamInfoMenu" /></item>
-				<item weight="11" level="2" text="Mgcamd Info" entryID="mgcamdinfo"><screen module="MgcamdInfo" screen="MgcamdInfo" /></item>
-				<item weight="11" level="2" text="Ncam Info" entryID="ncaminfo"><screen module="NcamInfo" screen="NcamInfoMenu" /></item>
 			</menu>
 			<item weight="15" level="0" text="Parental control" entryID="parental_setup"><screen module="ParentalControlSetup" screen="ParentalControlSetup"/></item>
-			<item weight="15" level="0" text="Ipk uninstall" entryID="Ipk_uninstall"><screen module="Ipkuninstall" screen="Ipkuninstall" /></item>
 			<item weight="15" level="0" text="Factory reset" entryID="factory_reset">
 				<code>
 from Screens.FactoryReset import FactoryReset
@@ -102,7 +97,6 @@ self.session.openWithCallback(msgClosed, FactoryReset)
 		</menu>
                 <menu text="Black Hole Shutdown" entryID="standby_restart_list">
 			<id val="shutdown" />
-			<!--<item text="Standby"><code>quitMainloop(0)</code></item>-->
 			<item weight="0" text="Shutdown" entryID="deep_standby"><screen module="Standby" screen="TryQuitMainloop">1</screen></item>
 			<item weight="1" text="Restart" entryID="restart"><screen module="Standby" screen="TryQuitMainloop">2</screen></item>
 			<item weight="2" text="Restart Gui" entryID="restart_enigma"><screen module="Standby" screen="TryQuitMainloop">3</screen></item>
