@@ -1,5 +1,6 @@
 import xml.etree.cElementTree
 
+from os import path
 import os
 import time
 from Tools.Directories import SCOPE_SKIN, resolveFilename
