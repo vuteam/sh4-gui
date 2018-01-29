@@ -23,7 +23,7 @@ class About(Screen):
         hddsplit = skin.parameters.get('AboutHddSplit', 0)
 
         bhVer = 'Black Hole'
-        f = open('/etc/imageversion', 'r')
+        f = open('/etc/image-version', 'r')
         bhVer = f.readline().strip()
         f.close()
 
@@ -38,11 +38,11 @@ class About(Screen):
 
         self['DriverVersion'] = StaticText(_('DVB drivers: ') + driverdate)
         self['KernelVersion'] = StaticText(_('Kernel version: ') + self.getKernelVersionString())
-        self['FPVersion'] = StaticText('Support: RAED rrrr53@hotmail.com')
+        self['FPVersion'] = StaticText('Support: REDOUANE rr80@yahoo.com')
         self['CpuInfo'] = StaticText(_('CPU: ') + self.getCPUInfoString())
         
         AboutText = _('Black Hole ') + bhVer + '\n'
-        AboutText += _('Support: RAED rrrr53@hotmail.com') + '\n\n'
+        AboutText += _('Support: REDOUANE rr80@yahoo.com') + '\n\n'
 
         AboutText += _('Hardware: ') + about.getHardwareTypeString() + '\n'
         AboutText += _('CPU: ') + about.getCPUInfoString() + '\n'
@@ -156,7 +156,7 @@ class About(Screen):
 
     def getDriverInstalledDate(self):
         try:
-            driver = os.popen('opkg list-installed | grep dreambox-dvb-modules').read().strip()
+            driver = os.popen('opkg list-installed | grep vuplus-dvb-modules').read().strip()
             driver = driver.split('-')
             return driver[5]
         except:
@@ -164,7 +164,7 @@ class About(Screen):
 
     def getDriverInstalledDate_proxy(self):
         try:
-            driver = os.popen('opkg list-installed | grep dreambox-dvb-proxy').read().strip()
+            driver = os.popen('opkg list-installed | grep vuplus-dvb-proxy').read().strip()
             driver = driver.split('-')
             driver = driver[4].split('.')
             return driver[0]
@@ -274,7 +274,7 @@ class CommitInfo(Screen):
             commitlog = commitlog.encode('utf-8')
             self.cachedProjects[self.projects[self.project][1]] = commitlog
         except:
-            commitlog += _('You are using Black Hole Image To Dreambox' '\n\n' 'Built By RAED' '\n\n' 'Support' '\n' 'e-mail: rrrr53@hotmail.com' '\n' 'Arabic : www.tunisia-sat.com' '\n' 'English: www.ourdreambox.com' '\n\n' 'Enjoy')
+            commitlog += _('You are using Black Hole Image To Vuplus Based On Openpli' '\n\n' 'Built By REDOUANE' '\n\n' 'Support' '\n' 'e-mail: rr80@yahoo.com' '\n' 'Forum : www.star7arab.com' '\n\n' 'Enjoy')
 
         self['AboutScrollLabel'].setText(commitlog)
 
