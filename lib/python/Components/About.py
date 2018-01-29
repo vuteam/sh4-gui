@@ -62,7 +62,7 @@ def getImageTypeString():
                 return _("undefined")
         
 def getCPUString():
-	try:
+        try:
 		system="unknown"
 		file = open('/proc/cpuinfo', 'r')
 		lines = file.readlines()
@@ -76,7 +76,7 @@ def getCPUString():
 					system = splitted[1].split(' ')[0]
 		file.close()
 		return system
-	 except IOError:
+	except IOError:
                 return "unavailable"        
 
 def getCPUInfoString():
