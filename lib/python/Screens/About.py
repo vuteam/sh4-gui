@@ -23,7 +23,7 @@ class About(Screen):
         hddsplit = skin.parameters.get('AboutHddSplit', 0)
 
         bhVer = 'Black Hole'
-        f = open('/etc/image-version', 'r')
+        f = open('/etc/bhversion', 'r')
         bhVer = f.readline().strip()
         f.close()
 
@@ -35,25 +35,16 @@ class About(Screen):
         driverdate = self.getDriverInstalledDate()
         if driverdate == 'unknown':
             driverdate = self.getDriverInstalledDate_proxy()
-
+            
+        self["EnigmaVersion"] = StaticText("Firmware: " + bhVer + " " + bhRev)
         self['DriverVersion'] = StaticText(_('DVB drivers: ') + driverdate)
         self['KernelVersion'] = StaticText(_('Kernel version: ') + self.getKernelVersionString())
-        self['FPVersion'] = StaticText('Support: REDOUANE rr80@yahoo.com')
+        self['FPVersion'] = StaticText('Team Homesite: www.star7arab.com')
         self['CpuInfo'] = StaticText(_('CPU: ') + self.getCPUInfoString())
         
-        AboutText = _('Black Hole ') + bhVer + '\n'
-        AboutText += _('Support: REDOUANE rr80@yahoo.com') + '\n\n'
-
         AboutText += _('Hardware: ') + about.getHardwareTypeString() + '\n'
         AboutText += _('CPU: ') + about.getCPUInfoString() + '\n'
-        # AboutText += _("Build date: ") + about.getBuildDateString() + "\n"
-
-        # [WanWizard] Removed until we find a reliable way to determine the installation date
-        # AboutText += _("Installed: ") + about.getFlashDateString() + "\n"
-
-        # [WanWizard] No longer that relevant as we now have an accurate build date
-        # as I'm not sure this variable isn't used elsewhere, I haven't removed it
-
+        
         EnigmaVersion = about.getEnigmaVersionString().rsplit("-", 2)
         if len(EnigmaVersion) == 3:
             EnigmaVersion = EnigmaVersion[0] + " " + EnigmaVersion[2] + "-" + EnigmaVersion[1]
@@ -72,8 +63,6 @@ class About(Screen):
         AboutText += GStreamerVersion + "\n"
 
         AboutText += _("Python version: ") + about.getPythonVersionString() + "\n"
-
-        AboutText += _("Enigma (re)starts: %d\n") % config.misc.startCounter.value
 
         fp_version = getFPVersion()
         if fp_version is None:
